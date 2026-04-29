@@ -47,6 +47,27 @@ await test('button shows is-copied class briefly after click', async () => {
   await new Promise(r => setTimeout(r, 10));
   assert(btn.classList.contains('is-copied'), 'expected is-copied class');
 });
+
+import { initTabs } from '../js/tabs.js';
+
+await test('clicking a tab selects it and shows its panel', async () => {
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="t3" data-tabs>
+      <div class="install__tabs">
+        <button class="install__tab" aria-selected="true"  data-tab="a">A</button>
+        <button class="install__tab" aria-selected="false" data-tab="b">B</button>
+      </div>
+      <div data-panel="a">PANEL A</div>
+      <div data-panel="b" hidden>PANEL B</div>
+    </div>`);
+  initTabs(document.getElementById('t3'));
+  const root = document.getElementById('t3');
+  root.querySelector('[data-tab="b"]').click();
+  assertEq(root.querySelector('[data-tab="a"]').getAttribute('aria-selected'), 'false');
+  assertEq(root.querySelector('[data-tab="b"]').getAttribute('aria-selected'), 'true');
+  assert(root.querySelector('[data-panel="a"]').hasAttribute('hidden'));
+  assert(!root.querySelector('[data-panel="b"]').hasAttribute('hidden'));
+});
 </script>
 </body>
 </html>
