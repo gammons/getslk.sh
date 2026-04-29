@@ -504,6 +504,7 @@ code, kbd, pre { font-family: var(--font-mono); }
 }
 .footer a { color: var(--text-muted); }
 .footer a:hover { color: var(--cyan); }
+.footer .heart { color: var(--magenta); }
 
 .themes-strip {
   display: grid;
