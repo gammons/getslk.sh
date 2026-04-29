@@ -28,9 +28,10 @@
       <h3 class="step-title">1. Install the binary</h3>
 
       <div class="install" data-tabs>
-        <div class="install__tabs" role="tablist">
-          <button class="install__tab" role="tab" aria-selected="true"  data-tab="macos">macOS</button>
-          <button class="install__tab" role="tab" aria-selected="false" data-tab="deb">Debian / Ubuntu</button>
+      <div class="install__tabs" role="tablist">
+        <button class="install__tab" role="tab" aria-selected="true"  data-tab="quick">Quick</button>
+        <button class="install__tab" role="tab" aria-selected="false" data-tab="macos">macOS</button>
+        <button class="install__tab" role="tab" aria-selected="false" data-tab="deb">Debian / Ubuntu</button>
           <button class="install__tab" role="tab" aria-selected="false" data-tab="rpm">Fedora / RHEL</button>
           <button class="install__tab" role="tab" aria-selected="false" data-tab="apk">Alpine</button>
           <button class="install__tab" role="tab" aria-selected="false" data-tab="tar">Tarball</button>
@@ -38,8 +39,17 @@
           <button class="install__tab" role="tab" aria-selected="false" data-tab="go">Go</button>
         </div>
 
-        <div class="install__panel" role="tabpanel" data-panel="macos">
-          <pre class="install__code"><button class="copy-btn" data-copy>copy</button>VERSION=$(curl -fsSL https://api.github.com/repos/gammons/slk/releases/latest | grep -oE '"tag_name": *"v[^"]+"' | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | sed 's/^v//')
+      <div class="install__panel" role="tabpanel" data-panel="quick">
+        <pre class="install__code"><button class="copy-btn" data-copy>copy</button>curl -fsSL https://getslk.sh/install.sh | sh</pre>
+        <p style="margin-top: var(--s-3); color: var(--text-muted); font-size: 13px;">
+          Auto-detects Linux/macOS &amp; x86_64/arm64. Installs to <code>/usr/local/bin</code>
+          (override with <code>INSTALL_DIR=…</code>). Read the script first if you'd rather:
+          <a href="/install.sh">install.sh</a>.
+        </p>
+      </div>
+
+      <div class="install__panel" role="tabpanel" data-panel="macos" hidden>
+        <pre class="install__code"><button class="copy-btn" data-copy>copy</button>VERSION=$(curl -fsSL https://api.github.com/repos/gammons/slk/releases/latest | grep -oE '"tag_name": *"v[^"]+"' | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | sed 's/^v//')
 # Apple Silicon
 curl -fsSL "https://github.com/gammons/slk/releases/latest/download/slk_${VERSION}_darwin_arm64.tar.gz" | tar xz
 # Intel
