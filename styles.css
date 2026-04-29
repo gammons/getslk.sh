@@ -477,3 +477,52 @@ code, kbd, pre { font-family: var(--font-mono); }
 }
 .footer a { color: var(--text-muted); }
 .footer a:hover { color: var(--cyan); }
+
+.themes-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--s-4);
+}
+.theme-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.theme-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.theme-card__preview {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.theme-card__body {
+  padding: var(--s-3) var(--s-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.theme-card__name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  margin: 0;
+}
+.theme-card__swatches {
+  display: flex;
+  gap: 4px;
+}
+.theme-card__swatches i {
+  width: 12px; height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
