@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Configuration — slk</title>
+  <meta name="description" content="An annotated walkthrough of slk's TOML configuration file.">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="nav nav--solid" aria-label="Primary">
+    <a class="nav__brand" href="/">slk</a>
+    <div class="nav__links">
+      <a href="/themes/">themes</a>
+      <a href="/install/">install</a>
+      <a href="/config/">config</a>
+      <a href="https://github.com/gammons/slk"><svg class="nav__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>github</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <p class="section__eyebrow">configuration</p>
+      <h2 class="section__title">Configure slk to your taste.</h2>
+      <p class="section__lede">
+        slk reads a single TOML file at <code>~/.config/slk/config.toml</code>.
+        Every key is optional — sensible defaults cover everything. This page
+        walks through each section in the order you'd typically reach for it.
+      </p>
+
+      <h3 class="step-title">The full example</h3>
+      <p>Copy this into <code>~/.config/slk/config.toml</code> as a starting point, then trim what you don't need.</p>
+      <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[general]
+default_workspace = "myteam"
+
+[appearance]
+theme = "dracula"
+timestamp_format = "3:04 PM"
+
+[animations]
+enabled = true
+smooth_scrolling = true
+typing_indicators = true
+
+[notifications]
+enabled = true
+on_mention = true
+on_dm = true
+on_keyword = ["deploy", "incident"]
+quiet_hours = "22:00-08:00"   # planned
+
+[cache]
+message_retention_days = 30
+max_db_size_mb = 500
+
+[sections.Alerts]
+channels = ["alerts", "ops", "*-alerts"]
+order = 1
+
+[sections.Engineering]
+channels = ["eng-*", "deploys", "bugs"]
+order = 2
+
+[theme]
+primary    = "#4A9EFF"
+accent     = "#50C878"
+background = "#1A1A2E"
+text       = "#E0E0E0"</pre>
+
+      <h3 class="step-title">[general]</h3>
+      <p>Workspace-wide defaults.</p>
+      <ul class="config-list">
+        <li><code>default_workspace</code> — name of the workspace to focus on launch. Useful when you have many connected workspaces and always start in the same one.</li>
+      </ul>
+
+      <h3 class="step-title">[appearance]</h3>
+      <p>How slk looks at the surface level.</p>
+      <ul class="config-list">
+        <li><code>theme</code> — name of any built-in or custom theme. See <a href="/themes/">all 12 built-in themes</a>. Live-switch at runtime with <span class="kbd">Ctrl+y</span>.</li>
+        <li><code>timestamp_format</code> — Go time-format string. <code>"3:04 PM"</code> for 12-hour, <code>"15:04"</code> for 24-hour, <code>"15:04:05"</code> if you want seconds.</li>
+      </ul>
+
+      <h3 class="step-title">[animations]</h3>
+      <p>If your terminal is slow or you find motion distracting, set <code>enabled = false</code> and the others stop applying.</p>
+      <ul class="config-list">
+        <li><code>enabled</code> — master switch. <code>true</code> by default.</li>
+        <li><code>smooth_scrolling</code> — interpolated scrolling vs. line-at-a-time jumps.</li>
+        <li><code>typing_indicators</code> — show "@dani is typing…" pulses.</li>
+      </ul>
+
+      <h3 class="step-title">[notifications]</h3>
+      <p>OS-level desktop notifications. Suppressed automatically when you're focused on the relevant channel.</p>
+      <ul class="config-list">
+        <li><code>enabled</code> — master switch.</li>
+        <li><code>on_mention</code> — fire on <code>@you</code>, <code>@here</code>, <code>@channel</code>.</li>
+        <li><code>on_dm</code> — fire on direct messages.</li>
+        <li><code>on_keyword</code> — list of strings; fires whenever a message contains any of them. Case-insensitive.</li>
+        <li><code>quiet_hours</code> — <em>planned.</em> A <code>"HH:MM-HH:MM"</code> window during which all notifications are suppressed.</li>
+      </ul>
+
+      <h3 class="step-title">[cache]</h3>
+      <p>slk keeps a local SQLite cache of message history. These knobs control how aggressive it is.</p>
+      <ul class="config-list">
+        <li><code>message_retention_days</code> — how many days of scrollback to keep. Older messages are evicted on the next backfill.</li>
+        <li><code>max_db_size_mb</code> — hard cap on the cache file size. When hit, the oldest messages are dropped first.</li>
+      </ul>
+
+      <h3 class="step-title">[sections.*] — custom channel sections</h3>
+      <p>By default channels are grouped by Slack's own categories. You can override that with one or more <code>[sections.Name]</code> tables. Each section is a glob over channel names.</p>
+      <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[sections.Alerts]
+channels = ["alerts", "ops", "*-alerts"]
+order = 1
+
+[sections.Engineering]
+channels = ["eng-*", "deploys", "bugs"]
+order = 2</pre>
+      <ul class="config-list">
+        <li><code>channels</code> — a list of glob patterns. Any channel matching one is rolled into this section.</li>
+        <li><code>order</code> — sort key. Lower numbers appear higher in the sidebar.</li>
+        <li>The section's display name comes from the table key (<code>Alerts</code>, <code>Engineering</code>).</li>
+      </ul>
+
+      <h3 class="step-title">[theme] — inline color overrides</h3>
+      <p>If you like a built-in theme but want to nudge a few colors, set them under <code>[theme]</code>. They override the active theme's values, leaving everything else intact.</p>
+      <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[theme]
+primary    = "#4A9EFF"
+accent     = "#50C878"
+background = "#1A1A2E"
+text       = "#E0E0E0"</pre>
+      <p>For a full theme — every color, sidebar variants, etc. — write a custom theme file instead (next section).</p>
+
+      <h3 class="step-title">Custom themes</h3>
+      <p>Drop a <code>.toml</code> file into <code>~/.config/slk/themes/</code> to add a new theme. The filename (minus extension) is the theme's slug; set <code>theme = "&lt;slug&gt;"</code> under <code>[appearance]</code> to use it.</p>
+      <pre class="install__code"><button class="copy-btn" data-copy>copy</button>name = "My Theme"
+
+[colors]
+primary      = "#BD93F9"
+accent       = "#50FA7B"
+warning      = "#FFB86C"
+error        = "#FF5555"
+background   = "#282A36"
+surface      = "#343746"
+surface_dark = "#21222C"
+text         = "#F8F8F2"
+text_muted   = "#6272A4"
+border       = "#44475A"
+
+# Optional: separate sidebar/rail palette so the sidebar can be darker
+# than the message pane (Slack's default look). Falls back to
+# background/text/text_muted/surface_dark when omitted.
+sidebar_background = "#19171D"
+sidebar_text       = "#D1D2D3"
+sidebar_text_muted = "#9A9B9E"
+rail_background    = "#19171D"</pre>
+
+      <h3 class="step-title">Data paths</h3>
+      <p>slk follows the XDG base directory spec.</p>
+      <table class="paths">
+        <thead><tr><th>Path</th><th>Contents</th></tr></thead>
+        <tbody>
+          <tr><td><code>~/.config/slk/</code></td><td>Configuration, custom themes</td></tr>
+          <tr><td><code>~/.local/share/slk/</code></td><td>SQLite cache, tokens</td></tr>
+          <tr><td><code>~/.cache/slk/</code></td><td>Avatars, image cache</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top: var(--s-7); color: var(--text-muted); font-size: 14px;">
+        Stuck or want a key documented that's not here? <a href="https://github.com/gammons/slk/issues">Open an issue</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      // MIT licensed · <a href="https://github.com/gammons/slk">github.com/gammons/slk</a> · grant ammons
+    </div>
+  </footer>
+
+  <script type="module" src="/js/copy.js"></script>
+</body>
+</html>

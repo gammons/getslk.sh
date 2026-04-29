@@ -677,3 +677,46 @@ code, kbd, pre { font-family: var(--font-mono); }
   padding: var(--s-4);
   font-size: 14px;
 }
+
+/* ============================================================
+   /config page
+   ============================================================ */
+.config-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-3) 0 var(--s-5);
+  display: grid;
+  gap: var(--s-2);
+}
+.config-list li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-3) var(--s-4);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.config-list li code {
+  color: var(--cyan);
+}
+
+.paths {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: var(--s-3);
+}
+.paths th, .paths td {
+  text-align: left;
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--border);
+}
+.paths th {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--magenta);
+  font-weight: 600;
+}
+.paths td:first-child code { color: var(--cyan); }
