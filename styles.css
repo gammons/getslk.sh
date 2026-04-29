@@ -96,7 +96,9 @@ code, kbd, pre { font-family: var(--font-mono); }
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 640px;
+  max-height: 900px;
   overflow: hidden;
   background:
     radial-gradient(ellipse 55% 35% at 50% 70%, rgba(255, 43, 214, 0.35) 0%, transparent 65%),
