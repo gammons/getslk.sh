@@ -362,10 +362,18 @@ code, kbd, pre { font-family: var(--font-mono); }
 }
 .nav__links a {
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 .nav__links a:hover {
   color: var(--cyan);
   text-decoration: none;
+}
+.nav__icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 /* ============================================================
