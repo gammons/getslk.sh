@@ -626,3 +626,44 @@ code, kbd, pre { font-family: var(--font-mono); }
 .tm__chan { padding: 2px 0; }
 .tm__main { padding: var(--s-3); }
 .tm__msg { padding: 4px 0; }
+
+/* ============================================================
+   /install setup walkthrough
+   ============================================================ */
+.step-title {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--cyan);
+  margin: var(--s-7) 0 var(--s-4);
+}
+.placeholder-shot {
+  background: #000;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-7);
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin: var(--s-4) 0;
+}
+.verify {
+  margin: var(--s-4) 0 var(--s-6);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.verify summary { cursor: pointer; }
+.verify[open] summary { margin-bottom: var(--s-3); }
+.trouble {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-3);
+}
+.trouble li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+  font-size: 14px;
+}
