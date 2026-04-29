@@ -526,3 +526,63 @@ code, kbd, pre { font-family: var(--font-mono); }
   border-radius: 3px;
   border: 1px solid rgba(255,255,255,0.1);
 }
+
+.install {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.install__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.install__tab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: var(--s-3) var(--s-4);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.install__tab[aria-selected="true"] {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
+}
+.install__tab:hover { color: var(--text); }
+.install__panel { padding: var(--s-5); }
+.install__panel[hidden] { display: none; }
+.install__code {
+  display: block;
+  position: relative;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+  padding-right: var(--s-8);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #d6f5f8;
+  overflow-x: auto;
+  white-space: pre;
+}
+.copy-btn {
+  position: absolute;
+  top: var(--s-2);
+  right: var(--s-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.copy-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+.copy-btn.is-copied { color: var(--magenta); border-color: var(--magenta); }
