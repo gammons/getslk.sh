@@ -586,3 +586,43 @@ code, kbd, pre { font-family: var(--font-mono); }
 }
 .copy-btn:hover { color: var(--cyan); border-color: var(--cyan); }
 .copy-btn.is-copied { color: var(--magenta); border-color: var(--magenta); }
+
+/* ============================================================
+   /themes gallery
+   ============================================================ */
+.themes-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-5);
+}
+@media (max-width: 720px) { .themes-gallery { grid-template-columns: 1fr; } }
+.theme-detail {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.theme-detail__preview { padding: 0; }
+.theme-detail__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-4);
+  border-top: 1px solid var(--border);
+}
+.theme-detail__meta h3 { margin: 0; font-size: 16px; font-family: var(--font-mono); }
+
+/* mini terminal mockup */
+.tm {
+  display: grid;
+  grid-template-columns: 32px 160px 1fr;
+  height: 200px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.tm__rail { display: flex; align-items: flex-start; justify-content: center; padding-top: var(--s-3); }
+.tm__sidebar { padding: var(--s-3); }
+.tm__section { font-size: 10px; opacity: .6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--s-2); }
+.tm__chan { padding: 2px 0; }
+.tm__main { padding: var(--s-3); }
+.tm__msg { padding: 4px 0; }

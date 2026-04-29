@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Themes — slk</title>
+  <meta name="description" content="The 12 themes that ship with slk. Drop your own TOML in ~/.config/slk/themes/ to add more.">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="nav nav--solid" aria-label="Primary">
+    <a class="nav__brand" href="/">slk</a>
+    <div class="nav__links">
+      <a href="/themes/">themes</a>
+      <a href="/install/">install</a>
+      <a href="https://github.com/gammons/slk">github</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <p class="section__eyebrow">themes</p>
+      <h2 class="section__title">Twelve themes ship with slk.</h2>
+      <p class="section__lede">
+        Live-switch with <span class="kbd">Ctrl+y</span>. Drop your own TOML files
+        in <code>~/.config/slk/themes/</code> to add more.
+      </p>
+
+      <div class="themes-gallery">
+
+        <article class="theme-detail" id="dracula">
+          <div class="theme-detail__preview" style="--th-bg:#282a36;--th-fg:#f8f8f2;--th-side:#21222c;--th-acc1:#bd93f9;--th-acc2:#50fa7b;--th-acc3:#ff79c6">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Dracula</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#282a36"></i><i style="background:#bd93f9"></i><i style="background:#50fa7b"></i><i style="background:#ff79c6"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="nord">
+          <div class="theme-detail__preview" style="--th-bg:#2e3440;--th-fg:#d8dee9;--th-side:#2a2f3a;--th-acc1:#88c0d0;--th-acc2:#a3be8c;--th-acc3:#b48ead">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Nord</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#2e3440"></i><i style="background:#88c0d0"></i><i style="background:#a3be8c"></i><i style="background:#b48ead"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="gruvbox">
+          <div class="theme-detail__preview" style="--th-bg:#282828;--th-fg:#ebdbb2;--th-side:#1d2021;--th-acc1:#fb4934;--th-acc2:#b8bb26;--th-acc3:#fabd2f">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Gruvbox</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#282828"></i><i style="background:#fb4934"></i><i style="background:#b8bb26"></i><i style="background:#fabd2f"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="tokyo-night">
+          <div class="theme-detail__preview" style="--th-bg:#1a1b26;--th-fg:#c0caf5;--th-side:#16161e;--th-acc1:#7aa2f7;--th-acc2:#9ece6a;--th-acc3:#bb9af7">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Tokyo Night</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#1a1b26"></i><i style="background:#7aa2f7"></i><i style="background:#9ece6a"></i><i style="background:#bb9af7"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="catppuccin">
+          <div class="theme-detail__preview" style="--th-bg:#1e1e2e;--th-fg:#cdd6f4;--th-side:#181825;--th-acc1:#f5c2e7;--th-acc2:#cba6f7;--th-acc3:#94e2d5">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Catppuccin</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#1e1e2e"></i><i style="background:#f5c2e7"></i><i style="background:#cba6f7"></i><i style="background:#94e2d5"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="monokai">
+          <div class="theme-detail__preview" style="--th-bg:#272822;--th-fg:#f8f8f2;--th-side:#1e1f1c;--th-acc1:#a6e22e;--th-acc2:#f92672;--th-acc3:#66d9ef">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Monokai</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#272822"></i><i style="background:#a6e22e"></i><i style="background:#f92672"></i><i style="background:#66d9ef"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="solarized-dark">
+          <div class="theme-detail__preview" style="--th-bg:#002b36;--th-fg:#93a1a1;--th-side:#073642;--th-acc1:#268bd2;--th-acc2:#859900;--th-acc3:#d33682">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Solarized Dark</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#002b36"></i><i style="background:#268bd2"></i><i style="background:#859900"></i><i style="background:#d33682"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="solarized-light">
+          <div class="theme-detail__preview" style="--th-bg:#fdf6e3;--th-fg:#586e75;--th-side:#eee8d5;--th-acc1:#268bd2;--th-acc2:#859900;--th-acc3:#d33682">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Solarized Light</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#fdf6e3"></i><i style="background:#268bd2"></i><i style="background:#859900"></i><i style="background:#d33682"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="one-dark">
+          <div class="theme-detail__preview" style="--th-bg:#282c34;--th-fg:#abb2bf;--th-side:#21252b;--th-acc1:#61afef;--th-acc2:#98c379;--th-acc3:#c678dd">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>One Dark</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#282c34"></i><i style="background:#61afef"></i><i style="background:#98c379"></i><i style="background:#c678dd"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="kanagawa">
+          <div class="theme-detail__preview" style="--th-bg:#1f1f28;--th-fg:#dcd7ba;--th-side:#16161d;--th-acc1:#7e9cd8;--th-acc2:#98bb6c;--th-acc3:#957fb8">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Kanagawa</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#1f1f28"></i><i style="background:#7e9cd8"></i><i style="background:#98bb6c"></i><i style="background:#957fb8"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="rose-pine">
+          <div class="theme-detail__preview" style="--th-bg:#191724;--th-fg:#e0def4;--th-side:#1f1d2e;--th-acc1:#c4a7e7;--th-acc2:#9ccfd8;--th-acc3:#ebbcba">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Rosé Pine</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#191724"></i><i style="background:#c4a7e7"></i><i style="background:#9ccfd8"></i><i style="background:#ebbcba"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-detail" id="ayu-dark">
+          <div class="theme-detail__preview" style="--th-bg:#0a0e14;--th-fg:#b3b1ad;--th-side:#06090e;--th-acc1:#59c2ff;--th-acc2:#c2d94c;--th-acc3:#ffb454">
+            <div class="tm">
+              <div class="tm__rail" style="background:var(--th-side);color:var(--th-fg)">●</div>
+              <div class="tm__sidebar" style="background:var(--th-side);color:var(--th-fg)">
+                <div class="tm__section">channels</div>
+                <div class="tm__chan" style="color:var(--th-acc1)"># general</div>
+                <div class="tm__chan">› eng-deploys</div>
+                <div class="tm__chan">› random</div>
+              </div>
+              <div class="tm__main" style="background:var(--th-bg);color:var(--th-fg)">
+                <div class="tm__msg"><b style="color:var(--th-acc2)">@grant</b> shipping the new theme today</div>
+                <div class="tm__msg"><b style="color:var(--th-acc3)">@dani</b> looks great <span style="color:var(--th-acc1)">:rocket:</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-detail__meta">
+            <h3>Ayu Dark</h3>
+            <div class="theme-card__swatches">
+              <i style="background:#0a0e14"></i><i style="background:#59c2ff"></i><i style="background:#c2d94c"></i><i style="background:#ffb454"></i>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p style="margin-top: var(--s-7); color: var(--text-muted); font-size: 14px;">
+        Real screenshots will replace these mock previews once available.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      // MIT licensed · <a href="https://github.com/gammons/slk">github.com/gammons/slk</a> · grant ammons
+    </div>
+  </footer>
+</body>
+</html>
