@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>tests</title></head>
+<body>
+<div id="results"></div>
+<script type="module">
+const results = document.getElementById('results');
+const log = (name, ok, err) => {
+  const div = document.createElement('div');
+  div.textContent = `${ok ? 'PASS' : 'FAIL'} — ${name}${err ? ': ' + err.message : ''}`;
+  div.style.color = ok ? 'green' : 'red';
+  div.style.fontFamily = 'monospace';
+  results.appendChild(div);
+};
+const test = async (name, fn) => {
+  try { await fn(); log(name, true); } catch (e) { log(name, false, e); console.error(e); }
+};
+const assert = (cond, msg) => { if (!cond) throw new Error(msg || 'assertion failed'); };
+const assertEq = (a, b) => { if (a !== b) throw new Error(`expected ${JSON.stringify(b)}, got ${JSON.stringify(a)}`); };
+
+// --- copy.js tests ---
+import { initCopyButtons } from '../js/copy.js';
+
+// Stub navigator.clipboard (real browsers expose it only as a getter).
+let __copied = '';
+Object.defineProperty(navigator, 'clipboard', {
+  configurable: true,
+  value: { writeText: t => { __copied = t; return Promise.resolve(); } },
+});
+
+await test('copy button copies text from parent <pre>', async () => {
+  document.body.insertAdjacentHTML('beforeend',
+    '<pre id="t1"><button class="copy-btn" data-copy>copy</button>hello world</pre>');
+  __copied = '';
+  initCopyButtons(document.getElementById('t1'));
+  document.querySelector('#t1 [data-copy]').click();
+  await new Promise(r => setTimeout(r, 10));
+  assertEq(__copied, 'hello world');
+});
+
+await test('button shows is-copied class briefly after click', async () => {
+  document.body.insertAdjacentHTML('beforeend',
+    '<pre id="t2"><button class="copy-btn" data-copy>copy</button>x</pre>');
+  initCopyButtons(document.getElementById('t2'));
+  const btn = document.querySelector('#t2 [data-copy]');
+  btn.click();
+  await new Promise(r => setTimeout(r, 10));
+  assert(btn.classList.contains('is-copied'), 'expected is-copied class');
+});
+</script>
+</body>
+</html>
