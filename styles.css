@@ -404,12 +404,12 @@ code, kbd, pre { font-family: var(--font-mono); }
   margin-inline: auto;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255, 43, 214, 0.35);
+  border: 3px solid rgba(34, 211, 238, 0.7);
   background: var(--surface);
   box-shadow:
-    0 0 60px rgba(255, 43, 214, 0.22),
-    0 0 100px rgba(176, 38, 255, 0.32),
-    0 0 180px rgba(176, 38, 255, 0.22),
+    0 0 40px rgba(34, 211, 238, 0.55),
+    0 0 100px rgba(34, 211, 238, 0.45),
+    0 0 200px rgba(0, 180, 216, 0.3),
     0 24px 60px rgba(0, 0, 0, 0.6);
 }
 .marquee__frame img {
