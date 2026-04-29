@@ -397,7 +397,7 @@ code, kbd, pre { font-family: var(--font-mono); }
    marquee (screenshot below hero)
    ============================================================ */
 .marquee {
-  padding-block: var(--s-8) var(--s-7);
+  padding-block: var(--s-5) var(--s-7);
 }
 .marquee__frame {
   max-width: 1100px;
@@ -424,6 +424,11 @@ code, kbd, pre { font-family: var(--font-mono); }
 .section {
   padding-block: var(--s-9);
   border-top: 1px solid var(--border);
+}
+/* Variant used when adjacent to the marquee — no border, tighter top/bottom. */
+.section--flush {
+  border-top: none;
+  padding-block: var(--s-7);
 }
 .section__eyebrow {
   font-family: var(--font-mono);

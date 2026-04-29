@@ -127,27 +127,32 @@
     </div>
   </section>
 
-  <section class="marquee" aria-label="Screenshot">
-  <div class="container">
-    <div class="marquee__frame">
-      <img src="/assets/screenshot.png" alt="slk running in a terminal: workspace rail, channel sidebar, and message pane" width="1586" height="1091">
-    </div>
-  </div>
-</section>
-
-<section class="section" id="why">
-    <div class="container">
+  <section class="section section--flush" id="why">
+    <div class="container" style="text-align: center;">
       <p class="section__eyebrow">why slk</p>
       <h2 class="section__title">The Slack desktop client, minus the 1.5GB of Chromium.</h2>
-      <p class="section__lede">
+      <p class="section__lede" style="margin-inline: auto;">
         slk is a daily-driver replacement built in Go. One static binary,
         no Electron, no node_modules. It cold-starts in milliseconds and
         keeps every workspace connected in parallel.
       </p>
+    </div>
+  </section>
+
+  <section class="marquee" aria-label="Screenshot">
+    <div class="container">
+      <div class="marquee__frame">
+        <img src="/assets/screenshot.png" alt="slk running in a terminal: workspace rail, channel sidebar, and message pane" width="1586" height="1091">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="container">
       <div class="stats">
         <div class="stat">
-        <p class="stat__value">~500ms</p>
-        <p class="stat__label">cold start</p>
+          <p class="stat__value">~500ms</p>
+          <p class="stat__label">cold start</p>
         </div>
         <div class="stat">
           <p class="stat__value">~60 MB</p>
