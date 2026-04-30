@@ -535,6 +535,14 @@ code, kbd, pre { font-family: var(--font-mono); }
 .footer a { color: var(--text-muted); }
 .footer a:hover { color: var(--cyan); }
 .footer .heart { color: var(--magenta); }
+.footer__disclaimer {
+  margin-top: var(--s-3);
+  font-size: 11px;
+  opacity: 0.7;
+  max-width: 720px;
+  margin-inline: auto;
+  line-height: 1.5;
+}
 
 .themes-strip {
   display: grid;
