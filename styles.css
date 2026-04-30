@@ -485,7 +485,7 @@ code, kbd, pre { font-family: var(--font-mono); }
 .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--s-5);
+  gap: var(--s-3);
 }
 @media (max-width: 900px) { .features { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
@@ -493,23 +493,25 @@ code, kbd, pre { font-family: var(--font-mono); }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: var(--s-5);
+  padding: var(--s-4);
 }
 .feature__label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--magenta);
-  margin: 0 0 var(--s-3);
-}
-.feature__title {
-  font-size: 20px;
-  font-weight: 700;
   margin: 0 0 var(--s-2);
 }
+.feature__title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 var(--s-1);
+  line-height: 1.25;
+}
 .feature__body {
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-muted);
   margin: 0;
 }
@@ -523,6 +525,52 @@ code, kbd, pre { font-family: var(--font-mono); }
   border-radius: 4px;
   background: var(--bg);
   color: var(--cyan);
+}
+
+/* ============================================================
+   keybindings reference
+   ============================================================ */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+}
+@media (max-width: 700px) { .keys { grid-template-columns: 1fr; } }
+.keys__group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+}
+.keys__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin: 0 0 var(--s-3);
+  font-weight: 700;
+}
+.keys__list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--s-3);
+  row-gap: var(--s-2);
+  margin: 0;
+  align-items: baseline;
+}
+.keys__list dt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  white-space: nowrap;
+}
+.keys__list dd {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .footer {
