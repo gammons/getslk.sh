@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>slk — a blazingly fast slack tui</title>
+    <title>slk - a blazingly fast slack tui</title>
     <meta
       name="description"
       content="A blazingly fast Slack TUI. Keyboard-driven, beautifully themed, with inline images and desktop notifications. Under 20MB. One static binary. No Electron required."
@@ -19,10 +19,16 @@
       content="A blazingly fast Slack TUI. Keyboard-driven, beautifully themed, under 20MB. One static binary. No Electron required."
     />
     <meta property="og:url" content="https://getslk.sh/" />
-    <meta property="og:image" content="https://getslk.sh/assets/screenshot.png" />
+    <meta
+      property="og:image"
+      content="https://getslk.sh/assets/screenshot.png"
+    />
     <meta property="og:image:width" content="1505" />
     <meta property="og:image:height" content="957" />
-    <meta property="og:image:alt" content="slk running in a terminal: workspace rail, channel sidebar, and message pane" />
+    <meta
+      property="og:image:alt"
+      content="slk running in a terminal: workspace rail, channel sidebar, and message pane"
+    />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -206,7 +212,8 @@
       <div class="container" style="text-align: center">
         <p class="section__eyebrow">why slk</p>
         <h2 class="section__title">
-          Full-featured, TUI-based Slack desktop client, minus the 1.5GB of Chromium.
+          Full-featured, TUI-based Slack desktop client, minus the 1.5GB of
+          Chromium.
         </h2>
         <p class="section__lede" style="margin-inline: auto">
           slk is an open-source, daily-driver TUI Slack client built in Go. One
@@ -296,7 +303,7 @@
             <p class="feature__body">
               Side-panel threads on <span class="kbd">Enter</span>, plus a
               dedicated <span class="kbd">⚑ Threads</span> view at the top of
-              the sidebar — every thread you authored, replied to, or were
+              the sidebar. Every thread you authored, replied to, or were
               @-mentioned in, unread first, re-ranking live as replies arrive.
             </p>
           </div>
@@ -307,9 +314,10 @@
             <p class="feature__body">
               Attachments render where they belong: kitty graphics on capable
               terminals, sixel on foot/mlterm, half-block (<code>▀</code>)
-              everywhere else. Click — or hit <span class="kbd">O</span> — for
-              a full-screen preview, <span class="kbd">Enter</span> to hand off
-              to your OS viewer. Lazy-loaded into a 200 MB LRU cache.
+              everywhere else. Click the image or hit
+              <span class="kbd">O</span> for a full-screen preview,
+              <span class="kbd">Enter</span> to hand off to your OS viewer.
+              Lazy-loaded into a 200 MB LRU cache.
             </p>
           </div>
 
@@ -327,9 +335,9 @@
             <p class="feature__label">/// copy</p>
             <h3 class="feature__title">Drag to copy, OSC 52 to clipboard</h3>
             <p class="feature__body">
-              Drag the mouse across messages to highlight them; release to
-              copy plain text straight to the system clipboard via OSC 52 —
-              even over SSH.
+              Drag the mouse across messages to highlight them; release to copy
+              plain text straight to the system clipboard via OSC 52, even over
+              SSH.
             </p>
           </div>
 
@@ -337,10 +345,11 @@
             <p class="feature__label">/// finder</p>
             <h3 class="feature__title">Fuzzy channel finder</h3>
             <p class="feature__body">
-              <span class="kbd">Ctrl+t</span> / <span class="kbd">Ctrl+p</span>
-              to jump to any channel or DM by name. Collapsible sidebar
-              sections with aggregate unread counts — pin <code>alerts</code>
-              and <code>eng-*</code> at the top via glob, fold the rest away.
+              <span class="kbd">Ctrl+t</span> /
+              <span class="kbd">Ctrl+p</span> to jump to any channel or DM by
+              name. Collapsible sidebar sections with aggregate unread counts.
+              Pin <code>alerts</code> and <code>eng-*</code> at the top via
+              glob, fold the rest away.
             </p>
           </div>
 
@@ -372,7 +381,7 @@
             <p class="feature__body">
               Hit <span class="kbd">Ctrl+S</span> to set Active, Away, or
               snooze. Standard durations (20m / 1h / 4h / until tomorrow) or a
-              custom minute count. Status bar shows a live countdown — and
+              custom minute count. Status bar shows a live countdown, and
               reflects external changes in real time.
             </p>
           </div>
@@ -397,17 +406,18 @@
             </p>
           </div>
         </div>
-       </div>
-     </section>
+      </div>
+    </section>
 
     <section class="section" id="keybindings">
       <div class="container">
         <p class="section__eyebrow">keybindings</p>
         <h2 class="section__title">Vim-modal, all the way.</h2>
         <p class="section__lede">
-          Every action is a keystroke or two away. <span class="kbd">Esc</span>
-          for normal mode, <span class="kbd">i</span> to insert — the rest
-          follows.
+          Every action is a keystroke or two away.
+          <span class="kbd">Esc</span> for normal mode,
+          <span class="kbd">i</span> to insert and compose a message. No menus,
+          no mouse, no modifiers required for the most common actions.
         </p>
 
         <div class="keys">
@@ -418,9 +428,13 @@
               <dd>move down / up in lists and messages</dd>
               <dt><span class="kbd">h</span> <span class="kbd">l</span></dt>
               <dd>switch focus between sidebar, messages, threads</dd>
-              <dt><span class="kbd">Tab</span> <span class="kbd">Shift+Tab</span></dt>
+              <dt>
+                <span class="kbd">Tab</span> <span class="kbd">Shift+Tab</span>
+              </dt>
               <dd>cycle focus forward / back</dd>
-              <dt><span class="kbd">Ctrl+u</span> <span class="kbd">Ctrl+d</span></dt>
+              <dt>
+                <span class="kbd">Ctrl+u</span> <span class="kbd">Ctrl+d</span>
+              </dt>
               <dd>half-page up / down</dd>
               <dt><span class="kbd">gg</span> <span class="kbd">G</span></dt>
               <dd>jump to top / bottom</dd>
@@ -438,7 +452,9 @@
               <dd>toggle sidebar</dd>
               <dt><span class="kbd">Ctrl+]</span></dt>
               <dd>toggle thread panel</dd>
-              <dt><span class="kbd">Ctrl+t</span> <span class="kbd">Ctrl+p</span></dt>
+              <dt>
+                <span class="kbd">Ctrl+t</span> <span class="kbd">Ctrl+p</span>
+              </dt>
               <dd>fuzzy channel finder</dd>
               <dt><span class="kbd">Ctrl+w</span></dt>
               <dd>workspace picker</dd>
