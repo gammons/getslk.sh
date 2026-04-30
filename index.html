@@ -6,7 +6,7 @@
     <title>slk — a blazingly fast slack tui</title>
     <meta
       name="description"
-      content="A blazingly fast Slack TUI. Keyboard-driven, beautifully themed, under 20MB. One static binary. No Electron required."
+      content="A blazingly fast Slack TUI. Keyboard-driven, beautifully themed, with inline images and desktop notifications. Under 20MB. One static binary. No Electron required."
     />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 
@@ -291,7 +291,52 @@
             <h3 class="feature__title">A real thread panel</h3>
             <p class="feature__body">
               Side-panel threads on <span class="kbd">Enter</span>, plus a
-              dedicated Threads view that re-ranks live as new replies arrive.
+              dedicated <span class="kbd">⚑ Threads</span> view at the top of
+              the sidebar — every thread you authored, replied to, or were
+              @-mentioned in, unread first, re-ranking live as replies arrive.
+            </p>
+          </div>
+
+          <div class="feature">
+            <p class="feature__label">/// images</p>
+            <h3 class="feature__title">Inline images, in a terminal</h3>
+            <p class="feature__body">
+              Attachments render where they belong: kitty graphics on capable
+              terminals, sixel on foot/mlterm, half-block (<code>▀</code>)
+              everywhere else. Click — or hit <span class="kbd">O</span> — for
+              a full-screen preview, <span class="kbd">Enter</span> to hand off
+              to your OS viewer. Lazy-loaded into a 200 MB LRU cache.
+            </p>
+          </div>
+
+          <div class="feature">
+            <p class="feature__label">/// notifications</p>
+            <h3 class="feature__title">Native desktop notifications</h3>
+            <p class="feature__body">
+              OS-level toasts on DMs, mentions, and any keyword you configure.
+              Auto-suppressed when you're focused on the channel, and silenced
+              entirely while you're in DND or snooze.
+            </p>
+          </div>
+
+          <div class="feature">
+            <p class="feature__label">/// copy</p>
+            <h3 class="feature__title">Drag to copy, OSC 52 to clipboard</h3>
+            <p class="feature__body">
+              Drag the mouse across messages to highlight them; release to
+              copy plain text straight to the system clipboard via OSC 52 —
+              even over SSH.
+            </p>
+          </div>
+
+          <div class="feature">
+            <p class="feature__label">/// finder</p>
+            <h3 class="feature__title">Fuzzy channel finder</h3>
+            <p class="feature__body">
+              <span class="kbd">Ctrl+t</span> / <span class="kbd">Ctrl+p</span>
+              to jump to any channel or DM by name. Collapsible sidebar
+              sections with aggregate unread counts — pin <code>alerts</code>
+              and <code>eng-*</code> at the top via glob, fold the rest away.
             </p>
           </div>
 

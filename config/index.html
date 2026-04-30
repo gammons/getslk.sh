@@ -37,6 +37,8 @@ default_workspace = "myteam"
 [appearance]
 theme = "dracula"
 timestamp_format = "3:04 PM"
+image_protocol = "auto"   # auto | kitty | sixel | halfblock | off
+max_image_rows = 20       # cap inline image height in terminal rows
 
 [animations]
 enabled = true
@@ -53,6 +55,7 @@ quiet_hours = "22:00-08:00"   # planned
 [cache]
 message_retention_days = 30
 max_db_size_mb = 500
+max_image_cache_mb = 200
 
 [sections.Alerts]
 channels = ["alerts", "ops", "*-alerts"]
@@ -61,6 +64,16 @@ order = 1
 [sections.Engineering]
 channels = ["eng-*", "deploys", "bugs"]
 order = 2
+
+# Per-workspace overrides — slug is whatever you chose at --add-workspace
+# time; team_id ties it to the underlying Slack workspace.
+[workspaces.work]
+team_id = "T01ABCDEF"
+theme   = "dracula"
+
+[workspaces.work.sections.Engineering]
+channels = ["eng-*", "deploys"]
+order = 1
 
 [theme]
 primary    = "#4A9EFF"
@@ -79,6 +92,8 @@ text       = "#E0E0E0"</pre>
       <ul class="config-list">
         <li><code>theme</code> — name of any built-in or custom theme. See <a href="/themes/">all 12 built-in themes</a>. Live-switch at runtime with <span class="kbd">Ctrl+y</span>.</li>
         <li><code>timestamp_format</code> — Go time-format string. <code>"3:04 PM"</code> for 12-hour, <code>"15:04"</code> for 24-hour, <code>"15:04:05"</code> if you want seconds.</li>
+        <li><code>image_protocol</code> — how inline images render. <code>auto</code> picks kitty graphics on capable terminals (kitty, ghostty, recent WezTerm), sixel on foot/mlterm, half-block (<code>▀</code>) everywhere else. Force one with <code>kitty</code> / <code>sixel</code> / <code>halfblock</code>, or disable inline images entirely with <code>off</code>. Inside tmux, slk falls back to half-block automatically.</li>
+        <li><code>max_image_rows</code> — cap inline image height in terminal rows so a tall screenshot doesn't eat the message pane.</li>
       </ul>
 
       <h3 class="step-title">[animations]</h3>
@@ -104,6 +119,7 @@ text       = "#E0E0E0"</pre>
       <ul class="config-list">
         <li><code>message_retention_days</code> — how many days of scrollback to keep. Older messages are evicted on the next backfill.</li>
         <li><code>max_db_size_mb</code> — hard cap on the cache file size. When hit, the oldest messages are dropped first.</li>
+        <li><code>max_image_cache_mb</code> — hard cap on the inline image LRU cache at <code>~/.cache/slk/images/</code>. Defaults to 200 MB.</li>
       </ul>
 
       <h3 class="step-title">[sections.*] — custom channel sections</h3>
@@ -119,6 +135,30 @@ order = 2</pre>
         <li><code>channels</code> — a list of glob patterns. Any channel matching one is rolled into this section.</li>
         <li><code>order</code> — sort key. Lower numbers appear higher in the sidebar.</li>
         <li>The section's display name comes from the table key (<code>Alerts</code>, <code>Engineering</code>).</li>
+      </ul>
+
+      <h3 class="step-title">[workspaces.&lt;slug&gt;] — per-workspace overrides</h3>
+      <p>If you live in more than one Slack workspace, you can give each one its own theme and channel sections. The slug is whatever you typed at <code>--add-workspace</code> time; <code>team_id</code> ties it to the underlying Slack workspace.</p>
+      <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[workspaces.work]
+team_id = "T01ABCDEF"
+theme   = "dracula"          # overrides [appearance].theme
+
+[workspaces.work.sections.Alerts]
+channels = ["alerts", "*-alerts"]
+order = 1
+
+[workspaces.work.sections.Engineering]
+channels = ["eng-*", "deploys"]
+order = 2
+
+# A second workspace with no per-workspace sections falls back to the
+# global [sections.*] table above.
+[workspaces.side]
+team_id = "T02XYZ"</pre>
+      <ul class="config-list">
+        <li>Per-workspace <code>[workspaces.&lt;slug&gt;.sections.*]</code> blocks <em>fully replace</em> the global <code>[sections.*]</code> for that workspace.</li>
+        <li>Workspaces that define no sections of their own fall back to the global table.</li>
+        <li>Legacy configs that key the block by raw team ID (<code>[workspaces.T01ABCDEF]</code>) keep working unchanged.</li>
       </ul>
 
       <h3 class="step-title">[theme] — inline color overrides</h3>
