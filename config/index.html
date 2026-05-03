@@ -49,6 +49,8 @@
       <p>Copy this into <code>~/.config/slk/config.toml</code> as a starting point, then trim what you don't need.</p>
       <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[general]
 default_workspace = "myteam"
+use_slack_sections = true       # use real Slack sidebar sections (default).
+                                # set false to use [sections.*] globs instead.
 
 [appearance]
 theme = "dracula"
@@ -89,7 +91,10 @@ order = 2
 # time; team_id ties it to the underlying Slack workspace.
 [workspaces.work]
 team_id = "T01ABCDEF"
+order   = 1                     # rail position; 1-based, used by 1-9 keys
 theme   = "dracula"
+use_slack_sections = false      # this workspace uses [sections.*] globs;
+                                # other workspaces still use Slack sections
 
 [workspaces.work.sections.Engineering]
 channels = ["eng-*", "deploys"]
@@ -105,6 +110,7 @@ text       = "#E0E0E0"</pre>
       <p>Workspace-wide defaults.</p>
       <ul class="config-list">
         <li><code>default_workspace</code> — name of the workspace to focus on launch. Useful when you have many connected workspaces and always start in the same one.</li>
+        <li><code>use_slack_sections</code> — when <code>true</code> (the default), slk reads your real Slack sidebar sections directly from the API and keeps them live over WebSocket. Any <code>[sections.*]</code> blocks in this file are ignored in that mode. Set to <code>false</code> globally — or per-workspace under <code>[workspaces.&lt;slug&gt;]</code> — to use the glob-based <code>[sections.*]</code> tables instead.</li>
       </ul>
 
       <h3 class="step-title">[appearance]</h3>
@@ -149,9 +155,12 @@ text       = "#E0E0E0"</pre>
         <li><code>max_image_cache_mb</code> — hard cap on the inline image LRU cache at <code>~/.cache/slk/images/</code>. Defaults to 200 MB.</li>
       </ul>
 
-      <h3 class="step-title">[sections.*] — custom channel sections</h3>
-      <p>By default channels are grouped by Slack's own categories. You can override that with one or more <code>[sections.Name]</code> tables. Each section is a glob over channel names.</p>
-      <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[sections.Alerts]
+      <h3 class="step-title">Sidebar sections — Slack-native vs. globs</h3>
+      <p>By default (<code>use_slack_sections = true</code>) slk reads your actual Slack sidebar sections — names, emoji, linked-list order, and channel/DM membership — and keeps them in sync over WebSocket. Reorder, rename, create, or delete sections in any other Slack client; slk catches up within a couple of seconds. Editing is read-only for v1: you do it in the official client, slk reflects the result.</p>
+      <p>Set <code>use_slack_sections = false</code> globally, or under a single <code>[workspaces.&lt;slug&gt;]</code>, to opt that scope into the glob-based tables instead. Globs are also used as a fallback when Slack's section API is unreachable.</p>
+      <pre class="install__code"><button class="copy-btn" data-copy>copy</button># Only consulted when use_slack_sections = false (globally or
+# per-workspace), or when Slack's section API is unreachable.
+[sections.Alerts]
 channels = ["alerts", "ops", "*-alerts"]
 order = 1
 
@@ -162,13 +171,17 @@ order = 2</pre>
         <li><code>channels</code> — a list of glob patterns. Any channel matching one is rolled into this section.</li>
         <li><code>order</code> — sort key. Lower numbers appear higher in the sidebar.</li>
         <li>The section's display name comes from the table key (<code>Alerts</code>, <code>Engineering</code>).</li>
+        <li><strong>v1 limits of Slack-native sections:</strong> sections of type <code>stars</code>, <code>slack_connect</code>, <code>salesforce_records</code>, and <code>agents</code> are hidden (matching the official client). Sections with more than 10 channels may load partially on first connect; missing channels temporarily fall into the catch-all bucket and migrate as WebSocket events fire.</li>
       </ul>
 
       <h3 class="step-title">[workspaces.&lt;slug&gt;] — per-workspace overrides</h3>
-      <p>If you live in more than one Slack workspace, you can give each one its own theme and channel sections. The slug is whatever you typed at <code>--add-workspace</code> time; <code>team_id</code> ties it to the underlying Slack workspace.</p>
+      <p>If you live in more than one Slack workspace, you can give each one its own rail position, theme, sidebar mode, and channel sections. The slug is whatever you typed at <code>--add-workspace</code> time; <code>team_id</code> ties it to the underlying Slack workspace.</p>
       <pre class="install__code"><button class="copy-btn" data-copy>copy</button>[workspaces.work]
 team_id = "T01ABCDEF"
-theme   = "dracula"          # overrides [appearance].theme
+order   = 1                     # rail position; 1-based, used by 1-9 keys
+theme   = "dracula"             # overrides [appearance].theme
+use_slack_sections = false      # this workspace uses [sections.*] globs;
+                                # other workspaces still use Slack sections
 
 [workspaces.work.sections.Alerts]
 channels = ["alerts", "*-alerts"]
@@ -178,13 +191,16 @@ order = 1
 channels = ["eng-*", "deploys"]
 order = 2
 
-# A second workspace with no per-workspace sections falls back to the
-# global [sections.*] table above.
+# A second workspace, ordered after the first, with no per-workspace
+# sections — falls back to the global [sections.*] above.
 [workspaces.side]
-team_id = "T02XYZ"</pre>
+team_id = "T02XYZ"
+order   = 2</pre>
       <ul class="config-list">
-        <li>Per-workspace <code>[workspaces.&lt;slug&gt;.sections.*]</code> blocks <em>fully replace</em> the global <code>[sections.*]</code> for that workspace.</li>
-        <li>Workspaces that define no sections of their own fall back to the global table.</li>
+        <li><code>order</code> — controls position in the rail and the digit-key mapping (<span class="kbd">1</span>–<span class="kbd">9</span>). Lower numbers come first; workspaces without an <code>order</code> sort after explicitly ordered ones, alphabetically by slug. The order is stable across runs regardless of which WebSocket connects first.</li>
+        <li><code>theme</code> — overrides <code>[appearance].theme</code> for this workspace only.</li>
+        <li><code>use_slack_sections</code> — overrides the global <code>[general].use_slack_sections</code>. Set to <code>false</code> here to use this workspace's <code>[workspaces.&lt;slug&gt;.sections.*]</code> globs while the rest of your workspaces keep using Slack-native sections.</li>
+        <li>Per-workspace <code>[workspaces.&lt;slug&gt;.sections.*]</code> blocks <em>fully replace</em> the global <code>[sections.*]</code> for that workspace. Workspaces with no per-workspace sections fall back to the global table.</li>
         <li>Legacy configs that key the block by raw team ID (<code>[workspaces.T01ABCDEF]</code>) keep working unchanged.</li>
       </ul>
 

@@ -136,7 +136,7 @@ sha256sum -c checksums.txt --ignore-missing</pre>
       <h3 class="step-title">3. Add your workspace</h3>
       <pre class="install__code"><button class="copy-btn" data-copy>copy</button>slk --add-workspace</pre>
       <p>You'll be prompted for the <code>d</code> cookie and <code>xoxc</code> token. Paste them in. slk will verify the credentials, fetch your channels, and you're connected.</p>
-      <p>To add another workspace later, run <code>slk --add-workspace</code> again. To switch between connected workspaces inside slk, press <span class="kbd">1</span>–<span class="kbd">9</span> or <span class="kbd">Ctrl+w</span>.</p>
+      <p>To add another workspace later, run <code>slk --add-workspace</code> again. To remove one, run <code>slk --remove-workspace</code> for an interactive picker — it deletes the saved token from <code>~/.local/share/slk/tokens/</code> and leaves your <code>config.toml</code> and SQLite cache alone. To switch between connected workspaces inside slk, press <span class="kbd">1</span>–<span class="kbd">9</span> or <span class="kbd">Ctrl+w</span>.</p>
 
       <h3 class="step-title">Troubleshooting</h3>
       <ul class="trouble">

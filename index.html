@@ -6,7 +6,7 @@
     <title>slk - a blazingly fast slack tui</title>
     <meta
       name="description"
-      content="A blazingly fast Slack TUI. Keyboard-driven, beautifully themed, with inline images and desktop notifications. Under 20MB. One static binary. No Electron required."
+      content="A blazingly fast Slack TUI. Keyboard-driven, with inline images, desktop notifications, Markdown compose, and live-syncing Slack sidebar sections. Under 20MB. One static binary. No Electron required."
     />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 
@@ -277,12 +277,28 @@
           </div>
 
           <div class="feature">
-            <p class="feature__label">/// edit + delete</p>
-            <h3 class="feature__title">Edit and delete your own messages</h3>
+            <p class="feature__label">/// edit, delete, unread</p>
+            <h3 class="feature__title">Own every message you sent</h3>
             <p class="feature__body">
-              Hit <span class="kbd">E</span> to edit (your in-progress draft is
+              <span class="kbd">E</span> to edit (your in-progress draft is
               stashed and restored), <span class="kbd">D</span> to delete with a
-              centered confirmation. No menus, no mouse.
+              centered confirmation, <span class="kbd">U</span> to roll the read
+              watermark back to any message — threads included, synced live with
+              other Slack clients.
+            </p>
+          </div>
+
+          <div class="feature">
+            <p class="feature__label">/// markdown compose</p>
+            <h3 class="feature__title">Type Markdown, send rich text</h3>
+            <p class="feature__body">
+              Type <code>**bold**</code>, <code>~~strike~~</code>,
+              <code>[label](url)</code>, <code>- bullets</code>,
+              <code>1. numbered</code>, or fenced
+              <code>```code blocks```</code>. slk converts on send to Slack's
+              mrkdwn + rich_text — already-mrkdwn syntax
+              (<code>*bold*</code>, <code>_italic_</code>) passes through
+              unchanged.
             </p>
           </div>
 
@@ -342,14 +358,26 @@
           </div>
 
           <div class="feature">
+            <p class="feature__label">/// sidebar</p>
+            <h3 class="feature__title">Your real Slack sidebar, live</h3>
+            <p class="feature__body">
+              slk reads your sidebar sections directly from Slack — names,
+              emoji, order, channel membership — and keeps them in sync over
+              WebSocket. Reorder or rename in the official client; slk
+              catches up in seconds. Falls back to glob-based config sections
+              when you'd rather configure your own.
+            </p>
+          </div>
+
+          <div class="feature">
             <p class="feature__label">/// finder</p>
             <h3 class="feature__title">Fuzzy channel finder</h3>
             <p class="feature__body">
               <span class="kbd">Ctrl+t</span> /
               <span class="kbd">Ctrl+p</span> to jump to any channel or DM by
-              name. Collapsible sidebar sections with aggregate unread counts.
-              Pin <code>alerts</code> and <code>eng-*</code> at the top via
-              glob, fold the rest away.
+              name. Collapsible sections with aggregate unread counts; the
+              finder auto-expands a collapsed section when you open a channel
+              inside it, and ranks 1:1 DMs above group DMs.
             </p>
           </div>
 
@@ -496,6 +524,8 @@
               <dd>edit your own message</dd>
               <dt><span class="kbd">D</span></dt>
               <dd>delete your own message (with confirmation)</dd>
+              <dt><span class="kbd">U</span></dt>
+              <dd>mark selected message and everything newer as unread</dd>
               <dt><span class="kbd">Y</span> <span class="kbd">C</span></dt>
               <dd>copy message permalink</dd>
               <dt><span class="kbd">O</span> <span class="kbd">v</span></dt>
